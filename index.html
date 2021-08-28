@@ -38,7 +38,7 @@
         e.preventDefault();
         if (input.value) {
           
-          socket.to('some room').emit('chat message', input.value);
+          socket.to('some room').emit(input.value);
 //           socket.emit('chat message', input.value);
           input.value = '';
         }
