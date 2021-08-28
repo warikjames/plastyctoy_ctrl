@@ -49,7 +49,7 @@
         window.scrollTo(0, document.body.scrollHeight);
       });
       
-      socket.on('hello', function(msg) {
+      socket.on('connection', function(msg) {
         var item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);
