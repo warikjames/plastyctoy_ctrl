@@ -11,7 +11,7 @@ io.on('connection', async (socket) => {
   
   const userId = await fetchUserId(socket);
   socket.join(userId);
-  io.to(userId).emit('hi');
+  socket.to(userId).emit('hi');
   
   //socket.broadcast.emit("connection", "Someone connected to the Chat");
   
