@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   
-  socket.broadcast.emit("hello", "world");
+  socket.broadcast.emit("connection", "You are connected to the Chat");
   
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
