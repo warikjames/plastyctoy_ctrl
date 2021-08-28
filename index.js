@@ -11,14 +11,9 @@ io.on('connection', (socket) => {
   
   socket.broadcast.emit("connection", "A user has connected to the Chat");
       
-  
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
   });
-  
-  socket.on("disconnect", => {
-     io.emit('chat message', 'A user has left the Chat');
-   });
   
 });
 
