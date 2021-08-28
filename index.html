@@ -50,13 +50,7 @@
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
-      
-      io.on("connection", socket => {
-  socket.on("private message", (anotherSocketId, msg) => {
-    socket.to(anotherSocketId).emit("private message", socket.id, msg);
-  });
-});
-      
+           
     </script>
   </body>
 </html>
