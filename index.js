@@ -7,13 +7,17 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
   
-  socket.broadcast.emit("connection", "You are connected to the Chat");
+  const userId = await fetchUserId(socket);
+  socket.join(userId);
+  io.to(userId).emit('hi');
   
-  socket.join('some room');
+  //socket.broadcast.emit("connection", "Someone connected to the Chat");
   
-  socket.to('some room').emit("connection", "You have joined some room");
+  //socket.join('some room');
+  
+  //socket.to('some room').emit("connection", "Someone has joined some room");
   
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
