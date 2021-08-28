@@ -30,7 +30,7 @@
       var input = document.getElementById('input');
 
       socket.on('connection', socket => {
-        socket.join('some room');
+        socket.emit("hello", "world");
       });
       
       
