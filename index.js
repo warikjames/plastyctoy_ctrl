@@ -11,6 +11,10 @@ io.on('connection', (socket) => {
   
   socket.broadcast.emit("connection", "You are connected to the Chat");
   
+  socket.join('some room');
+  
+  socket.to('some room').emit("connection", "You have joined some room");
+  
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
   });
