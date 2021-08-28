@@ -10,7 +10,11 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
 
   socket.broadcast.emit("connection", "Someone connected to the Chat");
-  
+        
+  socket.on("private message", (anotherSocketId, msg) => {
+    socket.to(anotherSocketId).emit("private message", socket.id, msg);
+  });
+
   //socket.join('some room');
   //socket.to('some room').emit("connection", "Someone has joined some room");
   
