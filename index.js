@@ -4,13 +4,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
-io.origins((origin, callback) => {
-  if (origin !== 'http://localhost:8888') {
-      return callback('origin not allowed', false);
-  }
-  callback(null, true);
-});
-
 app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
