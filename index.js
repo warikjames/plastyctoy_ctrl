@@ -1,23 +1,24 @@
 const app = require('express')();
 var cors = require('cors');
 const http = require('http').Server(app, {
-  handlePreflightRequest: (req, res) => {
-        const headers = {
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
-            "Access-Control-Allow-Credentials": true
-        };
-        res.writeHead(200, headers);
-        res.end();
-    }
+  cors: {
+    origin: "https://example.com",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
 });
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
-io.origins('*:*');
-
-
-app.get('/', (req, res, next) => {
+io.origins((origin, callback) => {
+  if (origin !== 'http://localhost:8888') {
+      return callback('origin not allowed', false);
+  }
+  callback(null, true);
+});
+app.ge
+t('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
 
