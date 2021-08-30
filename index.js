@@ -1,13 +1,6 @@
 const app = require('express')();
 var cors = require('cors');
-const http = require('http').Server(app, {
-  cors: {
-    origin: "https://example.com",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-  }
-});
+const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
