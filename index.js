@@ -9,7 +9,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.get('/', cors(corsOptions), (req, res, next) => {
+app.get('/', cors(corsOptions), function(req, res, next) => {
   res.sendFile(__dirname + '/index.html');
   res.json({msg: 'This is CORS-enabled for all origins!'});
 });
