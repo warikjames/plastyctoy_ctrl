@@ -4,8 +4,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
-app.use(cors());
-
 var corsOptions = {
   origin: 'http://localhost:8888',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
