@@ -14,16 +14,11 @@ const http = require('http').Server(app, {
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
-io.origins('*:*')
+io.origins('*:*');
 
-var corsOptions = {
-  origin: 'http://localhost:8888',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 
-app.get('/', cors(corsOptions), (req, res, next) => {
+app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
-  res.json({msg: 'This is CORS-enabled for all origins!'});
 });
 
 io.on('connection', (socket) => {
