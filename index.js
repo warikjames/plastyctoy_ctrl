@@ -17,8 +17,8 @@ io.origins((origin, callback) => {
   }
   callback(null, true);
 });
-app.ge
-t('/', (req, res, next) => {
+
+app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
 
