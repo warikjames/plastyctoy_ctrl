@@ -6,8 +6,9 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
+  res.json({msg: 'This is CORS-enabled for all origins!'});
 });
 
 io.on('connection', (socket) => {
