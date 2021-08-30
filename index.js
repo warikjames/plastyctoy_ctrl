@@ -1,7 +1,12 @@
 const app = require('express')();
 var cors = require('cors');
 const http = require('http').Server(app);
-const io = require('socket.io')(http, { cors: { origin: '*' } });
+//const io = require('socket.io')(http);
+
+const io = require("socket.io")(http, {cors: {
+origin: "http://localhost:8888", // or "*"
+methods: ["GET", "POST"]}});
+
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res, next) => {
