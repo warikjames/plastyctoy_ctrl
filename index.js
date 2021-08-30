@@ -5,7 +5,7 @@ const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
 var corsOptions = {
-  origin: 'http://example.com',
+  origin: 'http://localhost:8888',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
