@@ -1,10 +1,6 @@
 const app = require('express')();
 const http = require('http').Server(app);
-const io = require('socket.io')(server, {
-  cors: {
-    origin: '*',
-  }
-});
+const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
@@ -12,17 +8,9 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  
-  socket.broadcast.emit("connection", "A user has connected to the Chat");
-      
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
   });
-  
-  socket.on('disconnect', () => {
-    io.emit('chat message', 'A user has left the Chat');
-  });
-  
 });
 
 http.listen(port, () => {
