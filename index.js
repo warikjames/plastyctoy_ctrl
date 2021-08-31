@@ -13,13 +13,6 @@ app.get('/', (req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-  socket.on('joinRoom', ({ username, room }) => {
-
-    socket.join(user.room);
-
-    // Welcome current user
-    socket.emit('message', 'Welcome to ChatCord!'));
-  }); 
   
   socket.on('message', msg => {
     io.emit('message', msg);
