@@ -12,20 +12,29 @@ app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+function formatMessage(username, text){
+ return {
+   username,
+   text
+ };
+}
+
+const botName = "ADMIN";
+
 io.on('connection', (socket) => {
   
   //Welcome
-  socket.emit('message', 'Welcome to Chat');
+  socket.emit('message', formatMessage(botName,'Welcome to Chat'));
   
-  socket.broadcast.emit('message', 'A User has joined');
+  socket.broadcast.emit('message', formatMessage(botName, 'A User has joined'));
   
   socket.on('disconnect', () => {
-    io.emit('message', 'A user has left')
+    io.emit('message', formatMessage(botName,'A user has left'));
   });
   
             
   socket.on('message', msg => {
-    io.emit('message', msg);
+    io.emit('message', formatMessage('USER', msg));
   });
 });
 
