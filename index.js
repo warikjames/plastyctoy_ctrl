@@ -12,22 +12,7 @@ app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-// Join user to chat
-function userJoin(id, username, room) {
-  const user = { id, username, room };
-  users.push(user);
-  return user;
-}
-
-const botName = 'ChatCord Bot';
-
 io.on('connection', (socket) => {
-  
- socket.on('joinRoom', ({ username, room }) => {
-   const user = userJoin(socket.id, username, room);
-   socket.join(user.room);
-  });
-  
   socket.on('message', msg => {
     io.emit('message', msg);
   });
