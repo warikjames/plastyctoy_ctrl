@@ -23,18 +23,18 @@
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
-      username = "TEST ACCOUNT";
-      room = "TEST-ROOM";
+      var username = "TEST ACCOUNT";
+      var room = "TEST-ROOM";
       
       var socket = io();
       
       // Join chatroom
       socket.emit('joinRoom', { username, room });
       
-      socket.on('roomUsers', ({ room, users }) => {
-        outputRoomName(room);
-        outputUsers(users);
-      });
+//       socket.on('roomUsers', ({ room, users }) => {
+//         outputRoomName(room);
+//         outputUsers(users);
+//       });
       
       // Message from server
       socket.on('message', (message) => {
