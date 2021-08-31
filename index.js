@@ -12,15 +12,18 @@ app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+// Join user to chat
+function userJoin(id, username, room) {
+  const user = { id, username, room };
+  users.push(user);
+  return user;
+}
+
 io.on('connection', (socket) => {
   
-  console.log(socket.id);
-  
-  socket.join('some room');
-              
-  socket.on('message', msg => {
-    io.to('some room').emit('message', msg);
-  });      
+ socket.on('joinRoom', ({ username, room }) => {
+   const user = userJoin(socket.id, username, room);
+  });
   
   socket.on('message', msg => {
     io.emit('message', msg);
