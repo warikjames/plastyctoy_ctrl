@@ -14,6 +14,12 @@ app.get('/', (req, res, next) => {
 
 io.on('connection', (socket) => {
   
+  socket.join('some Room);
+              
+  socket.on('message', msg => {
+    io.to('some room').emit('message', msg);
+  });      
+  
   socket.on('message', msg => {
     io.emit('message', msg);
   });
