@@ -39,16 +39,16 @@ const botName = "ADMIN";
 io.on('connection', (socket) => {
  socket.on('joinRoom', ({username, room}) => {
     const user = userJoin(socket.id, username, room);
+    socket.join(user.room);
    
-   socket.emit('message', formatMessage(user.username,user.room));
-   
-//    socket.join(user.room);
- });
-  
+//     socket.emit('message', formatMessage(user.username,user.room));
+
     //Welcome
     socket.emit('message', formatMessage(botName,'Welcome to Chat'));
 
-    socket.broadcast.emit('message', formatMessage(botName, 'A user has joined'));
+    socket.broadcast.emit('message', formatMessage(botName, `${user.username} has joined ${user.room}'));
+     
+    });
      
   socket.on('message', msg => {
     io.emit('message', formatMessage('USER', msg));
