@@ -14,10 +14,6 @@ app.get('/', (req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-  
-  window.addEventListener('load', (event) => {
-    io.emit('message', 'page is fully loaded');
-  });
     
   socket.on('message', msg => {
     io.emit('message', msg);
