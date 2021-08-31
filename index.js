@@ -56,7 +56,7 @@ io.on('connection', (socket) => {
   });
   
      socket.on('disconnect', () => {
-      io.emit('message', formatMessage(botName,'A user has left'));
+      io.emit('message', formatMessage(user.username, 'has left'));
     });
 });
 
