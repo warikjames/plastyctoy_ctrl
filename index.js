@@ -35,13 +35,14 @@ io.on('connection', (socket) => {
    
    socket.join(user.room);
    
-   socket.broadcast
-      .to(user.room)
-      .emit(
-        'message',
-        formatMessage(botName, 'Someone has joined the chat')
-      );
-  });
+//    socket.broadcast
+//       .to(user.room)
+//       .emit(
+//         'message',
+//         formatMessage(botName, 'Someone has joined the chat')
+//       );
+   
+   });
   
   socket.on('message', msg => {
     io.emit('message', msg);
