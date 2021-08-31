@@ -29,9 +29,9 @@ function userJoin(id, username, room){
   return user;
 }
 
-// function getCurrentUser(id){
-//   return users.find(user => user.id === id);
-// }
+function getCurrentUser(id){
+  return users.find(user => user.id === id);
+}
   
 
 const botName = "ADMIN";
@@ -48,9 +48,12 @@ io.on('connection', (socket) => {
      
     });
      
-//   socket.on('message', msg => {
-//     io.emit('message', formatMessage('USER', msg));
-//   });
+  socket.on('message', msg => {
+    
+    const user = getCurrentUser(socket.id);
+    
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  });
   
      socket.on('disconnect', () => {
       io.emit('message', formatMessage(botName,'A user has left'));
