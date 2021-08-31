@@ -1,3 +1,8 @@
+const {
+  userJoin,
+  getCurrentUser
+} = require('./utils/users');
+
 const app = require('express')();
 var cors = require('cors');
 const http = require('http').Server(app);
