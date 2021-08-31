@@ -1,8 +1,8 @@
 const formatMessage = require('./utils/messages');
-const {
-  userJoin,
-  getCurrentUser
-} = require('./utils/users');
+// const {
+//   userJoin,
+//   getCurrentUser
+// } = require('./utils/users');
 
 const app = require('express')();
 var cors = require('cors');
