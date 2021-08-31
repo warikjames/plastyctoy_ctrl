@@ -30,7 +30,6 @@
       var socket = io();
 
       socket.emit('joinRoom', { username, room });
-
       
       var messages = document.getElementById('messages');
       var form = document.getElementById('form');
@@ -45,7 +44,6 @@
       });
 
       socket.on('message', function(msg) {
-        console.log(msg);
         var item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);
@@ -63,12 +61,6 @@
       socket.on("connect", () => {
         console.log(socket.id); // x8WIv7-mJelg7on_ALbx
       });
-      
-       function outputRoomName(room) {
-        var item = document.createElement('li');
-        item.textContent = room;
-        messages.appendChild(item);
-      }
       
     </script>
   </body>
