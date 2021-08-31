@@ -12,21 +12,6 @@ app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-//USERS 
-const users = [];
-// Join user to chat
-function userJoin(id, username, room) {
-  const user = { id, username, room };
-  users.push(user);
-  return user;
-}
-
-// Get current user
-function getCurrentUser(id) {
-  return users.find(user => user.id === id);
-}
-
-const { userJoin,  getCurrentUser};
 
 //MESSAGES
 function formatMessage(username, text){
@@ -41,13 +26,13 @@ const botName = "ADMIN";
 io.on('connection', (socket) => {
   
   socket.on('joinRoom', ({username, room}) => {
-    const user = userJoin(socket.id, username, room); 
-    socket.join(user.room);
+//     const user = userJoin(socket.id, username, room); 
+//     socket.join(user.room);
     
     //Welcome
     socket.emit('message', formatMessage(botName,'Welcome to Chat'));
 
-    socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} has joined`));
+    socket.broadcast.to(user.room).emit('message', formatMessage(botName, 'A user has joined'));
   });
      
   socket.on('message', msg => {
