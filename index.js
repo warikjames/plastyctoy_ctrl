@@ -33,13 +33,14 @@ io.on('connection', (socket) => {
  socket.on('joinRoom', ({ username, room }) => {
    const user = userJoin(socket.id, username, room);
    
+   socket.join(user.room);
+   
    socket.broadcast
       .to(user.room)
       .emit(
         'message',
         formatMessage(botName, `${user.username} has joined the chat`)
       );
-   
   });
   
   socket.on('message', msg => {
