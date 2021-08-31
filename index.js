@@ -1,9 +1,3 @@
-// const formatMessage = require('./utils/messages');
-// const {
-//   userJoin,
-//   getCurrentUser
-// } = require('./utils/users');
-
 const app = require('express')();
 var cors = require('cors');
 const http = require('http').Server(app);
@@ -28,16 +22,12 @@ function formatMessage(username, text) {
 const botName = "ADMIN";
 
 io.on('connection', (socket) => {
-  
-  socket.on('joinRoom', ({username, room}) => {
-//     const user = userJoin(socket.id, username, room); 
-//     socket.join(user.room);
-    
+
     //Welcome
     socket.emit('message', formatMessage(botName,'Welcome to Chat'));
 
-    socket.broadcast.to(user.room).emit('message', formatMessage(botName, 'A user has joined'));
-  });
+    socket.broadcast.emit('message', formatMessage(botName, 'A user has joined'));
+
      
   socket.on('message', msg => {
     io.emit('message', formatMessage('USER', msg));
