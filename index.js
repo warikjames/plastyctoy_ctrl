@@ -19,15 +19,34 @@ function formatMessage(username, text) {
   };
 }
 
+const users = [];
+
+function userJoin(id, username, room){
+  const user = {id, username, room};
+  
+  user.push(user);
+  
+  return user;
+}
+
+function getCurrentUser(id){
+  return users.find(user => user.id === id);
+}
+  
+
 const botName = "ADMIN";
 
 io.on('connection', (socket) => {
-
+ socket.on('joinRoom', ({username, room}) => {
+   const user = userJoin(socket.id, username, room);
+   
+   socket.join(user.room);
+   
     //Welcome
     socket.emit('message', formatMessage(botName,'Welcome to Chat'));
 
     socket.broadcast.emit('message', formatMessage(botName, 'A user has joined'));
-
+ });
      
   socket.on('message', msg => {
     io.emit('message', formatMessage('USER', msg));
