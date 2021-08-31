@@ -25,6 +25,9 @@ function userJoin(id, username, room) {
 function getCurrentUser(id) {
   return users.find(user => user.id === id);
 }
+
+const { userJoin,  getCurrentUser};
+
 //MESSAGES
 function formatMessage(username, text){
  return {
