@@ -52,7 +52,7 @@
       
       socket.on('connection', function(msg) {
         var item = document.createElement('li');
-        item.textContent = msg;
+        item.textContent = msg.username + " " + msg.text;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
