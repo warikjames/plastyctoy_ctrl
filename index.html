@@ -23,7 +23,26 @@
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
+      username = "TEST ACCOUNT";
+      room = "TEST-ROOM";
+      
       var socket = io();
+      
+      // Join chatroom
+      socket.emit('joinRoom', { username, room });
+      
+      socket.on('roomUsers', ({ room, users }) => {
+        outputRoomName(room);
+        outputUsers(users);
+      });
+      
+      // Message from server
+      socket.on('message', (message) => {
+        console.log(message);
+        outputMessage(message);
+      });
+      
+      
 
       var messages = document.getElementById('messages');
       var form = document.getElementById('form');
@@ -50,6 +69,14 @@
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
+      
+      
+      
+      function outputMessage(message) {
+        var item = document.createElement('li');
+        item.textContent = message;
+        messages.appendChild(item);
+      }
  
     </script>
   </body>
