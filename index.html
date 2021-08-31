@@ -46,7 +46,6 @@
 
       socket.on('message', function(msg) {
         console.log(msg);
-        outputMessage(msg);
         var item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);
