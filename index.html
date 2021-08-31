@@ -24,12 +24,12 @@
 
     <script>
 
-//       var username = "TEST";
-//       var room = "TEST-ROOM";
+      var username = "TEST";
+      var room = "TEST-ROOM";
       
       var socket = io();
 
-//       socket.emit('joinRoom', { username, room });
+      socket.emit('joinRoom', { username, room });
       
       var messages = document.getElementById('messages');
       var form = document.getElementById('form');
