@@ -1,8 +1,8 @@
 const app = require('express')();
 var cors = require('cors');
 const http = require('http').Server(app);
-//const formatMessage = require('messages');
-//const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('users');
+const formatMessage = require('./utils/messages');
+const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
 
 const io = require("socket.io")(http, {cors: {
 origin: "http://localhost:8888", // or "*"
