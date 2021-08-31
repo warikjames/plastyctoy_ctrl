@@ -38,9 +38,9 @@ const botName = "ADMIN";
 
 io.on('connection', (socket) => {
  socket.on('joinRoom', ({username, room}) => {
-//    const user = userJoin(socket.id, username, room);
+    const user = userJoin(socket.id, username, room);
    
-   socket.emit('message', formatMessage(username,room));
+   socket.emit('message', formatMessage(user.username,user.room));
    
 //    socket.join(user.room);
  });
