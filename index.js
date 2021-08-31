@@ -24,7 +24,7 @@ const users = [];
 function userJoin(id, username, room){
   const user = {id, username, room};
   
-  user.push(user);
+  user.push(users);
   
   return user;
 }
