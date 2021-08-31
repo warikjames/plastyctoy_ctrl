@@ -40,8 +40,6 @@ io.on('connection', (socket) => {
  socket.on('joinRoom', ({username, room}) => {
     const user = userJoin(socket.id, username, room);
     socket.join(user.room);
-   
-//     socket.emit('message', formatMessage(user.username,user.room));
 
     //Welcome
     socket.emit('message', formatMessage(botName,`Welcome ${user.username} to ${user.room}`));
