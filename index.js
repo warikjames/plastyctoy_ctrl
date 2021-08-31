@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
 //     socket.emit('message', formatMessage(user.username,user.room));
 
     //Welcome
-    socket.emit('message', formatMessage(botName,'Welcome to Chat'));
+    socket.emit('message', formatMessage(botName,`Welcome ${user.username} to ${user.room}`));
 
     socket.broadcast.emit('message', formatMessage(botName, `${user.username} has joined ${user.room}`));
      
