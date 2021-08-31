@@ -22,10 +22,8 @@ const botName = 'ChatCord Bot';
 
 io.on('connection', (socket) => {
   
-  socket.on('joinRoom', ({ username, room }) => {
-    const user = userJoin(socket.id, username, room);
-    socket.join(user.room);
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+  socket.on('message', msg => {
+    io.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
   });
   
   socket.on('message', msg => {
