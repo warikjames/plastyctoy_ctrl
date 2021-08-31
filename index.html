@@ -63,6 +63,11 @@
         console.log(socket.id); // x8WIv7-mJelg7on_ALbx
       });
       
+      // Message from server
+      socket.on('message', (message) => {
+        console.log(message);
+        outputMessage(message);
+      });
       
        function outputRoomName(room) {
         var item = document.createElement('li');
