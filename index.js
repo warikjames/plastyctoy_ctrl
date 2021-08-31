@@ -40,6 +40,8 @@ io.on('connection', (socket) => {
  socket.on('joinRoom', ({username, room}) => {
 //    const user = userJoin(socket.id, username, room);
    
+   socket.emit('message', formatMessage(username,room));
+   
 //    socket.join(user.room);
  });
   
