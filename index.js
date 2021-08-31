@@ -50,9 +50,9 @@ io.on('connection', (socket) => {
      
     });
      
-  socket.on('message', msg => {
-    io.emit('message', formatMessage('USER', msg));
-  });
+//   socket.on('message', msg => {
+//     io.emit('message', formatMessage('USER', msg));
+//   });
   
      socket.on('disconnect', () => {
       io.emit('message', formatMessage(botName,'A user has left'));
