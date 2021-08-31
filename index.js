@@ -1,3 +1,9 @@
+const formatMessage = require('./utils/messages');
+const {
+  userJoin,
+  getCurrentUser
+} = require('./utils/users');
+
 const app = require('express')();
 var cors = require('cors');
 const http = require('http').Server(app);
@@ -6,11 +12,7 @@ const io = require("socket.io")(http, {cors: {
 origin: "http://localhost:8888", // or "*"
 methods: ["GET", "POST"]}});
 
-const formatMessage = require('./utils/messages');
-const {
-  userJoin,
-  getCurrentUser
-} = require('./utils/users');
+
 
 const port = process.env.PORT || 3000;
 
