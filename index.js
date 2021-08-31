@@ -1,4 +1,4 @@
-const formatMessage = require('./utils/messages');
+// const formatMessage = require('./utils/messages');
 // const {
 //   userJoin,
 //   getCurrentUser
@@ -12,13 +12,18 @@ const io = require("socket.io")(http, {cors: {
 origin: "http://localhost:8888", // or "*"
 methods: ["GET", "POST"]}});
 
-
-
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
+
+function formatMessage(username, text) {
+  return {
+    username,
+    text
+  };
+}
 
 const botName = "ADMIN";
 
