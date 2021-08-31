@@ -12,7 +12,21 @@ app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+function userJoin(id, username, room) {
+  const user = { id, username, room };
+  users.push(user);
+  return user;
+}
+
 io.on('connection', (socket) => {
+  socket.on('joinRoom', ({ username, room }) => {
+     const user = userJoin(socket.id, username, room);
+
+    socket.join(user.room);
+
+    // Welcome current user
+    socket.emit('message', 'Welcome to ChatCord!'));
+  }); 
   
   socket.on('message', msg => {
     io.emit('message', msg);
