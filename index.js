@@ -19,6 +19,13 @@ function userJoin(id, username, room) {
   return user;
 }
 
+function formatMessage(username, text) {
+  return {
+    username,
+    text
+  };
+}
+
 const botName = 'ChatCord Bot';
 
 io.on('connection', (socket) => {
