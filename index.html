@@ -45,6 +45,8 @@
       });
 
       socket.on('message', function(msg) {
+        console.log(msg);
+        outputMessage(msg);
         var item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);
@@ -75,11 +77,6 @@
         messages.appendChild(item);
       }
       
-      function outputMessage(msg) {
-        var item = document.createElement('li');
-        item.textContent = msg;
-        messages.appendChild(item);
-      }
     </script>
   </body>
 </html>
