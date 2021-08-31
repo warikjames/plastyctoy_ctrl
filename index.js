@@ -11,16 +11,9 @@ const port = process.env.PORT || 3000;
 app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
 });
-const users = [];
-function userJoin(id, username, room) {
-  const user = { id, username, room };
-  users.push(user);
-  return user;
-}
 
 io.on('connection', (socket) => {
   socket.on('joinRoom', ({ username, room }) => {
-     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
 
