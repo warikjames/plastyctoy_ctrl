@@ -19,10 +19,20 @@ function userJoin(id, username, room) {
   return user;
 }
 
+const botName = 'ChatCord Bot';
+
 io.on('connection', (socket) => {
   
  socket.on('joinRoom', ({ username, room }) => {
    const user = userJoin(socket.id, username, room);
+   
+   socket.broadcast
+      .to(user.room)
+      .emit(
+        'message',
+        formatMessage(botName, `${user.username} has joined the chat`)
+      );
+   
   });
   
   socket.on('message', msg => {
