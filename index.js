@@ -32,14 +32,7 @@ function userJoin(id, username, room){
 function getCurrentUser(id){
   return users.find(user => user.id === id);
 }
-  
-// function userLeave(id) {
-//   const index = users.findIndex(user => user.id === id);
-
-//   if (index !== -1) {
-//     return users.splice(index, 1)[0];
-//   }
-// }
+ 
 
 const botName = "ADMIN";
 
@@ -61,23 +54,6 @@ io.on('connection', (socket) => {
     
     io.to(user.room).emit('message', formatMessage(user.username, msg));
   });
-  
-//    socket.on('disconnect', () => {
-//     const user = userLeave(socket.id);
-
-//     if (user) {
-//       io.to(user.room).emit(
-//         'message',
-//         formatMessage(botName, `${user.username} has left the chat`)
-//       );
-
-//       // Send users and room info
-//       io.to(user.room).emit('roomUsers', {
-//         room: user.room,
-//         users: getRoomUsers(user.room)
-//       });
-//     }
-//   });
   
 });
 
