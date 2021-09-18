@@ -3,7 +3,7 @@ var cors = require('cors');
 const http = require('http').Server(app);
 
 const io = require("socket.io")(http, {cors: {
-origin: ['https://plastyctoy.com', 'http://localhost:8888'], // or "*"
+origin: 'https://plastyctoy.com', // or "*"
 methods: ["GET", "POST"]}});
 
 const port = process.env.PORT || 3000;
