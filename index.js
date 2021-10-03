@@ -42,10 +42,8 @@ io.on('connection', (socket) => {
     socket.join(user.room);
 
     //Welcome
-    socket.emit('message', formatMessage(botName,`Welcome ${user.username} to ${user.room}`));
-
+    socket.emit('message', formatMessage(botName,`Welcome ${user.username} to ${user.room}`'s room));
     socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} has joined ${user.room}`));
-     
     });
      
   socket.on('message', msg => {
@@ -57,5 +55,5 @@ io.on('connection', (socket) => {
   
 });
 http.listen(port, () => {
-  console.log(`Socket.IO server running at http://localhost:${port}/`);
+  console.log(`Socket.IO server running at ${port}/`);
 });
