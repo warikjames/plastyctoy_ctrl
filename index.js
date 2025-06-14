@@ -2,6 +2,9 @@ const app = require('express')();
 var cors = require('cors');
 const http = require('http').Server(app);
 
+// enable CORS for the HTTP routes as well
+app.use(cors());
+
 const io = require("socket.io")(http, {cors: {
 origin: ["https://plastyctoy.com", "http://localhost:8888"], // or "*"
 methods: ["GET", "POST"]}});
